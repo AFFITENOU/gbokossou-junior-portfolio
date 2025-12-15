@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Junior GBOKOSSOU</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bleu-nuit: #1C2A39;
+            --gris-acier: #A8B0B9;
+            --bleu-ardoise: #3E4C59;
+            --blanc-casse: #F4F5F7;
+            --taupe-fonce: #7A7465;
+            --vert-professionnel: #2E8B57;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --radius: 16px;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--bleu-nuit);
+            background: var(--blanc-casse);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header et Navigation */
+        header {
+            background: var(--bleu-nuit);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--blanc-casse);
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            font-size: 1.8rem;
+            color: var(--taupe-fonce);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            color: var(--blanc-casse);
+            font-weight: 600;
+            text-decoration: none;
+            position: relative;
+            transition: var(--transition);
+            padding: 8px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--taupe-fonce);
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--taupe-fonce);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--blanc-casse);
+            transition: var(--transition);
+            border-radius: 3px;
+        }
+
+        /* Section Hero Portfolio */
+        #portfolio-hero {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--bleu-nuit) 0%, var(--bleu-ardoise) 100%);
+            position: relative;
+            overflow: hidden;
+            padding-top: 100px;
+            margin-bottom: 60px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+            text-align: center;
+            margin: 0 auto;
+            color: var(--blanc-casse);
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero-content h1 span {
+            color: var(--taupe-fonce);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            color: var(--gris-acier);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(122, 116, 101, 0.2);
+            color: var(--taupe-fonce);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border: 1px solid rgba(122, 116, 101, 0.3);
+        }
+
+        /* Navigation des sections */
+        .portfolio-nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+        }
+
+        .portfolio-nav-btn {
+            padding: 12px 24px;
+            background: white;
+            border: 2px solid var(--gris-acier);
+            border-radius: 50px;
+            color: var(--bleu-ardoise);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .portfolio-nav-btn:hover,
+        .portfolio-nav-btn.active {
+            background: var(--taupe-fonce);
+            color: white;
+            border-color: var(--taupe-fonce);
+            transform: translateY(-3px);
+        }
+
+        /* Section Titre */
+        .section-title {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            color: var(--bleu-nuit);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 5px;
+            background: var(--taupe-fonce);
+            border-radius: 5px;
+        }
+
+        .section-title p {
+            color: var(--bleu-ardoise);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Timeline Parcours */
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto 100px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: var(--taupe-fonce);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 60px;
+            width: 100%;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+            margin-right: 0;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 0;
+            margin-right: auto;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: var(--taupe-fonce);
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: var(--shadow);
+            z-index: 2;
+        }
+
+        .timeline-content {
+            width: 45%;
+            background: white;
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            position: relative;
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-date {
+            background: var(--taupe-fonce);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .timeline-content h3 {
+            color: var(--bleu-nuit);
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+
+        .timeline-content h4 {
+            color: var(--vert-professionnel);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .timeline-content p {
+            color: var(--bleu-ardoise);
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .timeline-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .timeline-tag {
+            background: var(--blanc-casse);
+            color: var(--bleu-ardoise);
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid var(--gris-acier);
+        }
+
+        /* Section Expériences */
+        .experiences-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 100px;
+        }
+
+        .experience-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 35px 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--taupe-fonce);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .experience-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--taupe-fonce);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .experience-title {
+            flex: 1;
+        }
+
+        .experience-title h3 {
+            color: var(--bleu-nuit);
+            margin-bottom: 5px;
+            font-size: 1.3rem;
+        }
+
+        .experience-title h4 {
+            color: var(--vert-professionnel);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .experience-date {
+            color: var(--taupe-fonce);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .experience-description {
+            color: var(--bleu-ardoise);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .experience-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: var(--blanc-casse);
+            color: var(--bleu-ardoise);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid var(--gris-acier);
+            transition: var(--transition);
+        }
+
+        .skill-tag:hover {
+            background: var(--taupe-fonce);
+            color: white;
+            border-color: var(--taupe-fonce);
+        }
+
+        /* Section Téléchargement */
+        .download-section {
+            background: white;
+            border-radius: var(--radius);
+            padding: 60px 40px;
+            box-shadow: var(--shadow);
+            margin-bottom: 100px;
+            text-align: center;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--taupe-fonce);
+        }
+
+        .download-section h3 {
+            color: var(--bleu-nuit);
+            margin-bottom: 15px;
+            font-size: 2.2rem;
+        }
+
+        .download-section p {
+            color: var(--bleu-ardoise);
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .download-options {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 32px;
+            background: var(--taupe-fonce);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            text-decoration: none;
+            font-size: 1.1rem;
+            border: 2px solid var(--taupe-fonce);
+            min-width: 220px;
+            justify-content: center;
+        }
+
+        .download-btn:hover {
+            background: transparent;
+            color: var(--taupe-fonce);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(122, 116, 101, 0.3);
+        }
+
+        .download-btn.secondary {
+            background: var(--bleu-ardoise);
+            border-color: var(--bleu-ardoise);
+        }
+
+        .download-btn.secondary:hover {
+            background: transparent;
+            color: var(--bleu-ardoise);
+        }
+
+        .download-btn i {
+            font-size: 1.3rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bleu-nuit);
+            color: var(--blanc-casse);
+            padding: 80px 0 30px;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--taupe-fonce);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        .footer-section h3 {
+            color: var(--taupe-fonce);
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
+            font-size: 1.4rem;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--gris-acier);
+            border-radius: 3px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--gris-acier);
+            transition: var(--transition);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a:hover {
+            color: var(--taupe-fonce);
+            transform: translateX(5px);
+        }
+
+        .contact-info {
+            list-style: none;
+        }
+
+        .contact-info li {
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: var(--gris-acier);
+        }
+
+        .contact-info i {
+            color: var(--taupe-fonce);
+            width: 20px;
+            font-size: 1.1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        .social-links a:hover {
+            background: var(--taupe-fonce);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.95rem;
+            color: var(--gris-acier);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-dot {
+                left: 30px;
+            }
+            
+            .timeline-content {
+                width: calc(100% - 80px);
+                margin-left: 80px !important;
+                margin-right: 0 !important;
+            }
+            
+            .download-options {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .download-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: var(--bleu-nuit);
+                flex-direction: column;
+                padding: 100px 20px 20px;
+                box-shadow: var(--shadow);
+                text-align: center;
+                gap: 25px;
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(8px, 8px);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -7px);
+            }
+
+            .hero-content h1 {
+                font-size: 2.4rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+
+            .portfolio-nav {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .portfolio-nav-btn {
+                width: 200px;
+                text-align: center;
+                justify-content: center;
+            }
+
+            .experiences-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .download-section {
+                padding: 40px 20px;
+            }
+            
+            .experience-header {
+                flex-direction: column;
+            }
+            
+            .experience-icon {
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header et Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <i class="fas fa-network-wired"></i>
+                    Junior GBOKOSSOU
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="portfolio.html" class="active">Portfolio</a></li>
+                    <li><a href="projets.html">Projets</a></li>
+                    <li><a href="competences.html">Compétences</a></li>
+                    <li><a href="veille.html">Veille</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Section Hero Portfolio -->
+    <section id="portfolio-hero">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1>Mon <span>Portfolio</span></h1>
+                <p>Parcours professionnel <br> Expériences en entreprise  <br> Réalisations dans le domaine des réseaux et systèmes.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contenu principal du portfolio -->
+    <div class="container">
+        <!-- Navigation des sections -->
+        <div class="portfolio-nav">
+            <button class="portfolio-nav-btn active" data-section="parcours">
+                <i class="fas fa-graduation-cap"></i>
+                Mon Parcours
+            </button>
+            <button class="portfolio-nav-btn" data-section="experiences">
+                <i class="fas fa-briefcase"></i>
+                Expériences
+            </button>
+            <button class="portfolio-nav-btn" data-section="download">
+                <i class="fas fa-download"></i>
+                Téléchargements
+            </button>
+        </div>
+
+        <!-- Section Parcours -->
+        <section id="parcours-section" class="portfolio-section active">
+            <div class="section-title">
+                <h2>Parcours</h2>
+                <p>Mon cheminement académique et professionnel dans le domaine des réseaux et systèmes</p>
+            </div>
+            
+            <div class="timeline">
+                <!-- Formation 1 -->
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2023 - 2024</span>
+                        <h3>BTS SIO Option SISR</h3>
+                        <h4>IPSSI Saint-Quentin en Yvelines - France</h4>
+                        <p>Formation spécialisée en Solutions d'Infrastructure, Systèmes et Réseaux. Acquisition de compétences en administration réseau, virtualisation et sécurité informatique.</p>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">Réseaux</span>
+                            <span class="timeline-tag">Systèmes</span>
+                            <span class="timeline-tag">Sécurité</span>
+                            <span class="timeline-tag">Virtualisation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2023 - 2024</span>
+                        <h3>BTS IDA </h3>
+                        <h4>Agitel Formation - côte d'ivoire</h4>
+                        <p>Formation spécialisée en developpement d'application web et mobile .</p>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">Application web</span>
+                            <span class="timeline-tag">appication mobile</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Formation 2 -->
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2022 - 2023</span>
+                        <h3>Baccalauréat S</h3>
+                        <h4>Thanon Namanko - côte d'ivoire</h4>
+                    </div>
+                </div>
+                
+                <!-- Certification 1 -->
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2024</span>
+                        <h3>GDSC (Google Developer Student Club) Core Member</h3>
+                        <h4>Certificate of Completion</h4>
+                        <p></p>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">google</span>
+                            <span class="timeline-tag">GDSC</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Certification 2 -->
+                <!-- <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2023</span>
+                        <h3>Linux Essentials</h3>
+                        <h4>Linux Professional Institute</h4>
+                        <p>Certification validant les compétences fondamentales en administration système Linux et en ligne de commande.</p>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">Linux</span>
+                            <span class="timeline-tag">Administration</span>
+                            <span class="timeline-tag">Terminal</span>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Expériences -->
+        <section id="experiences-section" class="portfolio-section">
+            <div class="section-title">
+                <h2>Expériences Professionnelles</h2>
+                <p>Mes stages et expériences en entreprise dans le domaine des réseaux et systèmes</p>
+            </div>
+            
+            <div class="experiences-grid">
+                <!-- Expérience 1 -->
+                <div class="experience-card fade-in">
+                    <div class="experience-header">
+                        <div class="experience-icon">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <div class="experience-title">
+                            <h3>Stage Assistant informatique</h3>
+                            <h4>Ouéso</h4>
+                            <span class="experience-date">Avril 2025 </span>
+                        </div>
+                    </div>
+                    <div class="experience-description">
+                        <p> Assistant support, explication et aide aux clients. réalisation des tâches quotidienne, Mise à jouret et mise en place de service sur plateforme web, veuiller au bon fonctionnement des outils et à la résolution en cas de panne. </p>
+                    </div>
+                    <div class="experience-skills">
+                        <span class="skill-tag">Prestashop</span>
+                        <span class="skill-tag">travail d'équipe</span>
+                        <span class="skill-tag">Support client</span>
+                        <span class="skill-tag">Technicien support</span>
+                        <span class="skill-tag">Réseaux</span>
+                    </div>
+                </div>
+                
+                <!-- Expérience 2 -->
+                <div class="experience-card fade-in">
+                    <div class="experience-header">
+                        <div class="experience-icon">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <div class="experience-title">
+                            <h3>Technicien Systèmes & Réseaux</h3>
+                            <h4>SIPSSI SQY - projet pédagogique</h4>
+                            <span class="experience-date">Janvier 2025</span>
+                        </div>
+                    </div>
+                    <div class="experience-description">
+                        <p>Configuration de serveurs Web sous Apache/Nginx, monitoring, supervision et gestion des tickets</p>
+                    </div>
+                    <div class="experience-skills">
+                        <span class="skill-tag">Support Technique</span>
+                        <span class="skill-tag">Réseaux</span>
+                        
+                    </div>
+                </div>
+                
+                <!-- Expérience 3 -->
+                <!-- <div class="experience-card fade-in">
+                    <div class="experience-header">
+                        <div class="experience-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="experience-title">
+                            <h3>Projet Sécurité Réseau</h3>
+                            <h4>Projet Académique</h4>
+                            <span class="experience-date">Septembre 2023 - Décembre 2023</span>
+                        </div>
+                    </div>
+                    <div class="experience-description">
+                        <p>Conception et mise en œuvre d'une infrastructure réseau sécurisée avec firewall, VPN et système de détection d'intrusion. Audit de sécurité et recommandations d'amélioration.</p>
+                    </div>
+                    <div class="experience-skills">
+                        <span class="skill-tag">Sécurité</span>
+                        <span class="skill-tag">Firewall</span>
+                        <span class="skill-tag">VPN</span>
+                        <span class="skill-tag">Audit</span>
+                        <span class="skill-tag">PfSense</span>
+                    </div>
+                </div>
+            </div> -->
+        </section>
+
+        <!-- Section Téléchargement -->
+        <section id="download-section" class="portfolio-section">
+            <div class="download-section fade-in">
+                <h3>Téléchargez Mon Profil</h3>
+                <p>Accédez à mon CV détaillé, mon tableau de synthèse et mes documents professionnels pour en savoir plus sur mon parcours et mes compétences</p>
+                <div class="download-options">
+                    <a href="/fichiers/Junior GBOKOSSOU CV.pdf" class="download-btn" id="download-cv">
+                        <i class="fas fa-file-pdf"></i>
+                        Télécharger mon CV
+                    </a>
+                    <a href="/fichiers/Tableau de synthese- GBOKOSSOU Junior.pdf" class="download-btn secondary" id="download-synthesis">
+                        <i class="fas fa-table"></i>
+                        Tableau de Synthèse
+                    </a>
+                    
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+     <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Navigation</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
+                        <li><a href="portfolio.html"><i class="fas fa-briefcase"></i> Portfolio</a></li>
+                        <li><a href="projets.html"><i class="fas fa-project-diagram"></i> Projets</a></li>
+                        <li><a href="competences.html"><i class="fas fa-cogs"></i> Compétences</a></li>
+                        <li><a href="veille.html"><i class="fas fa-binoculars"></i> Veille</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            onlyothniel@gmail.com
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            France
+                        </li>
+                    </ul>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/junior-gbokossou-850b43275" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Junior GBOKOSSOU. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation mobile
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Fermer le menu mobile en cliquant sur un lien
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Navigation entre les sections du portfolio
+        const portfolioButtons = document.querySelectorAll('.portfolio-nav-btn');
+        const portfolioSections = document.querySelectorAll('.portfolio-section');
+
+        portfolioButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Retirer la classe active de tous les boutons
+                portfolioButtons.forEach(btn => btn.classList.remove('active'));
+                // Ajouter la classe active au bouton cliqué
+                button.classList.add('active');
+                
+                // Masquer toutes les sections
+                portfolioSections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // Afficher la section correspondante
+                const section = button.getAttribute('data-section');
+                const targetSection = document.getElementById(`${section}-section`);
+                
+                if (targetSection) {
+                    targetSection.classList.add('active');
+                    
+                    // Scroll vers la section
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Observer pour l'animation des éléments au défilement
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observer les éléments à animer
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Gestion des téléchargements
+        document.getElementById('download-cv').addEventListener('click', function(e) {
+            e.preventDefault();
+            // Simuler le téléchargement (remplacer par vos vrais fichiers)
+            const link = document.createElement('a');
+            link.href = '#'; // Remplacez par le chemin vers votre CV
+            link.download = 'CV_Junior_GBOKOSSOU.pdf';
+            link.click();
+        });
+
+        document.getElementById('download-synthesis').addEventListener('click', function(e) {
+            e.preventDefault();
+            // Simuler le téléchargement (remplacer par vos vrais fichiers)
+            const link = document.createElement('a');
+            link.href = '#'; // Remplacez par le chemin vers votre tableau de synthèse
+            link.download = 'Tableau_Synthese_Junior_GBOKOSSOU.pdf';
+            link.click();
+        });
+
+        document.getElementById('download-portfolio').addEventListener('click', function(e) {
+            e.preventDefault();
+            // Simuler le téléchargement (remplacer par vos vrais fichiers)
+            const link = document.createElement('a');
+            link.href = '#'; // Remplacez par le chemin vers votre portfolio complet
+            link.download = 'Portfolio_Junior_GBOKOSSOU.pdf';
+            link.click();
+        });
+
+        // Animation au chargement de la page
+        window.addEventListener('load', () => {
+            document.body.classList.add('loaded');
+        });
+    </script>
+</body>
+</html>

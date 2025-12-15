@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Junior GBOKOSSOU</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bleu-nuit: #1C2A39;
+            --gris-acier: #A8B0B9;
+            --bleu-ardoise: #3E4C59;
+            --blanc-casse: #F4F5F7;
+            --taupe-fonce: #7A7465;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --radius: 16px;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--bleu-nuit);
+            background: var(--blanc-casse);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header et Navigation */
+        header {
+            background: var(--bleu-nuit);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--blanc-casse);
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            font-size: 1.8rem;
+            color: var(--taupe-fonce);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            color: var(--blanc-casse);
+            font-weight: 600;
+            text-decoration: none;
+            position: relative;
+            transition: var(--transition);
+            padding: 8px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--taupe-fonce);
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--taupe-fonce);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--blanc-casse);
+            transition: var(--transition);
+            border-radius: 3px;
+        }
+
+        /* Section Hero Portfolio */
+        #portfolio-hero {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--bleu-nuit) 0%, var(--bleu-ardoise) 100%);
+            position: relative;
+            overflow: hidden;
+            padding-top: 100px;
+            margin-bottom: 60px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+            text-align: center;
+            margin: 0 auto;
+            color: var(--blanc-casse);
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero-content h1 span {
+            color: var(--taupe-fonce);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            color: var(--gris-acier);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(122, 116, 101, 0.2);
+            color: var(--taupe-fonce);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border: 1px solid rgba(122, 116, 101, 0.3);
+        }
+
+        /* Section Compétences */
+        .section-title {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            color: var(--bleu-nuit);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 5px;
+            background: var(--taupe-fonce);
+            border-radius: 5px;
+        }
+
+        .section-title p {
+            color: var(--bleu-ardoise);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Compétences en cercles */
+        .skills-circles-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 100px;
+        }
+
+        .skill-category {
+            background: white;
+            border-radius: var(--radius);
+            padding: 40px 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .skill-category:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .skill-category h3 {
+            color: var(--bleu-nuit);
+            margin-bottom: 30px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-align: center;
+            justify-content: center;
+        }
+
+        .skill-category h3 i {
+            color: var(--taupe-fonce);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .skill-circle {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .circle-container {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin-bottom: 15px;
+        }
+
+        .circle-bg {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: var(--blanc-casse);
+            box-shadow: inset 0 0 0 10px var(--gris-acier);
+            position: relative;
+        }
+
+        .circle-progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0%);
+            background: conic-gradient(var(--taupe-fonce) 0% var(--percentage), transparent var(--percentage) 100%);
+            transition: --percentage 1.5s ease-in-out;
+        }
+
+        .circle-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--bleu-nuit);
+            font-size: 1.2rem;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-name {
+            font-weight: 600;
+            color: var(--bleu-nuit);
+            margin-top: 10px;
+        }
+
+        /* Section Projets */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 30px;
+            margin-bottom: 100px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-img {
+            height: 220px;
+            background: var(--bleu-ardoise);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-img::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .project-content {
+            padding: 30px;
+        }
+
+        .project-content h3 {
+            color: var(--bleu-nuit);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .project-content p {
+            color: var(--bleu-ardoise);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .tag {
+            background: rgba(168, 176, 185, 0.2);
+            color: var(--bleu-ardoise);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid rgba(168, 176, 185, 0.3);
+        }
+
+        /* Section Soft Skills */
+        .soft-skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 100px;
+        }
+
+        .soft-skill-item {
+            background: white;
+            padding: 35px 30px;
+            border-radius: var(--radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .soft-skill-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .soft-skill-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--taupe-fonce);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            margin: 0 auto 20px;
+            transition: var(--transition);
+        }
+
+        .soft-skill-item:hover .soft-skill-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .soft-skill-item h4 {
+            color: var(--bleu-nuit);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .soft-skill-item p {
+            color: var(--bleu-ardoise);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Section Téléchargement */
+        .download-section {
+            background: white;
+            border-radius: var(--radius);
+            padding: 60px 40px;
+            box-shadow: var(--shadow);
+            margin-bottom: 100px;
+            text-align: center;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--taupe-fonce);
+        }
+
+        .download-section h3 {
+            color: var(--bleu-nuit);
+            margin-bottom: 15px;
+            font-size: 2.2rem;
+        }
+
+        .download-section p {
+            color: var(--bleu-ardoise);
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .download-options {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 32px;
+            background: var(--taupe-fonce);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            text-decoration: none;
+            font-size: 1.1rem;
+            border: 2px solid var(--taupe-fonce);
+            min-width: 220px;
+            justify-content: center;
+        }
+
+        .download-btn:hover {
+            background: transparent;
+            color: var(--taupe-fonce);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(122, 116, 101, 0.3);
+        }
+
+        .download-btn.secondary {
+            background: var(--bleu-ardoise);
+            border-color: var(--bleu-ardoise);
+        }
+
+        .download-btn.secondary:hover {
+            background: transparent;
+            color: var(--bleu-ardoise);
+        }
+
+        .download-btn i {
+            font-size: 1.3rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bleu-nuit);
+            color: var(--blanc-casse);
+            padding: 80px 0 30px;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--taupe-fonce);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        .footer-section h3 {
+            color: var(--taupe-fonce);
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
+            font-size: 1.4rem;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--gris-acier);
+            border-radius: 3px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--gris-acier);
+            transition: var(--transition);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a:hover {
+            color: var(--taupe-fonce);
+            transform: translateX(5px);
+        }
+
+        .contact-info {
+            list-style: none;
+        }
+
+        .contact-info li {
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: var(--gris-acier);
+        }
+
+        .contact-info i {
+            color: var(--taupe-fonce);
+            width: 20px;
+            font-size: 1.1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        .social-links a:hover {
+            background: var(--taupe-fonce);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.95rem;
+            color: var(--gris-acier);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .download-options {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .download-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: var(--bleu-nuit);
+                flex-direction: column;
+                padding: 100px 20px 20px;
+                box-shadow: var(--shadow);
+                text-align: center;
+                gap: 25px;
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(8px, 8px);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -7px);
+            }
+
+            .hero-content h1 {
+                font-size: 2.4rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+
+            .skills-circles-container {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .soft-skills-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .download-section {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header et Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <i class="fas fa-network-wired"></i>
+                    Junior GBOKOSSOU
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="portfolio.html" class="active">Portfolio</a></li>
+                    <li><a href="projets.html">Projets</a></li>
+                    <li><a href="competences.html">Compétences</a></li>
+                    <li><a href="veille.html">Veille</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Section Hero Portfolio -->
+    <section id="portfolio-hero">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1>Mon <span>Portfolio</span></h1>
+                <p>Découvrez mes compétences en administration réseau, cybersécurité et mes projets en infrastructure informatique.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contenu principal du portfolio -->
+    <div class="container">
+        <!-- Section Compétences Techniques -->
+        <section id="competences-techniques">
+            <div class="section-title">
+                <h2>Hard skills</h2>
+                <p>Mes expertises en réseaux, systèmes et sécurité informatique</p>
+            </div>
+            
+            <div class="skills-circles-container">
+                <!-- Réseaux -->
+                <div class="skill-category fade-in">
+                    <h3><i class="fas fa-network-wired"></i> Réseaux</h3>
+                    <div class="skills-grid">
+                        <div class="skill-circle">
+                            <div class="circle-container">
+                                <div class="circle-bg"></div>
+                                <div class="circle-progress" style="--percentage: 55%"></div>
+                                <div class="circle-content">55%</div>
+                            </div>
+                            <span class="skill-name">TCP/IP</span>
+                        </div>
+                        <div class="skill-circle">
+                            <div class="circle-container">
+                                <div class="circle-bg"></div>
+                                <div class="circle-progress" style="--percentage: 50%"></div>
+                                <div class="circle-content">50%</div>
+                            </div>
+                            <span class="skill-name">VLAN</span>
+                        </div>
+                        <div class="skill-circle">
+                            <div class="circle-container">
+                                <div class="circle-bg"></div>
+                                <div class="circle-progress" style="--percentage: 50%"></div>
+                                <div class="circle-content">50%</div>
+                            </div>
+                            <span class="skill-name">Routing</span>
+                        </div>
+                        <div class="skill-circle">
+                            <div class="circle-container">
+                                <div class="circle-bg"></div>
+                                <div class="circle-progress" style="--percentage: 50%"></div>
+                                <div class="circle-content">50%</div>
+                            </div>
+                            <span class="skill-name">WiFi</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Systèmes -->
+                <div class="skill-category fade-in">
+                    <h3><i class="fas fa-server"></i> Systèmes</h3>
+                    <div class="skills-grid">
+                        <div class="skill-circle">
+                            <div class="circle-container">
+                                <div class="circle-bg"></div>
+                                <div class="circle-progress" style="--percentage: 70%"></div>
+                                <div class="circle-content">70%</div>
+                            </div>
+                            <span class="skill-name">Windows Server</span>
+                        </div>
+                        <div class="skill-circle">
+                            <div class="circle-container">
+                                <div class="circle-bg"></div>
+                                <div class="circle-progress" style="--percentage: 70%"></div>
+                                <div class="circle-content">70%</div>
+                            </div>
+                            <span class="skill-name">Linux</span>
+                        </div>
+                        <div class="skill-circle">
+                            <div class="circle-container">
+                                <div class="circle-bg"></div>
+                                <div class="circle-progress" style="--percentage: 70%"></div>
+                                <div class="circle-content">70%</div>
+                            </div>
+                            <span class="skill-name">Virtualisation</span>
+                        </div>
+                        <div class="skill-circle">
+                            <div class="circle-container">
+                                <div class="circle-bg"></div>
+                                <div class="circle-progress" style="--percentage: 60%"></div>
+                                <div class="circle-content">60%</div>
+                            </div>
+                            <span class="skill-name">Active Directory</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sécurité -->
+                <div class="skill-category fade-in">
+                    <h3><i class="fas fa-shield-alt"></i> Sécurité</h3>
+                    <div class="skills-grid">
+                        <div class="skill-circle">
+                            <div class="circle-container">
+                                <div class="circle-bg"></div>
+                                <div class="circle-progress" style="--percentage: 50%"></div>
+                                <div class="circle-content">50%</div>
+                            </div>
+                            <span class="skill-name">Firewall</span>
+                        </div>
+                        <div class="skill-circle">
+                            <div class="circle-container">
+                                <div class="circle-bg"></div>
+                                <div class="circle-progress" style="--percentage: 50%"></div>
+                                <div class="circle-content">50%</div>
+                            </div>
+                            <span class="skill-name">VPN</span>
+                        </div>
+                        <div class="skill-circle">
+                            <div class="circle-container">
+                                <div class="circle-bg"></div>
+                                <div class="circle-progress" style="--percentage: 50%"></div>
+                                <div class="circle-content">50%</div>
+                            </div>
+                            <span class="skill-name">Sécurité WiFi</span>
+                        </div>
+                        <div class="skill-circle">
+                            <div class="circle-container">
+                                <div class="circle-bg"></div>
+                                <div class="circle-progress" style="--percentage: 20%"></div>
+                                <div class="circle-content">20%</div>
+                            </div>
+                            <span class="skill-name">Audit Sécurité</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Projets Récents -->
+        <!-- <section id="projets-recents">
+            <div class="section-title">
+                <h2>Projets Réseaux & Systèmes</h2>
+                <p>Mes réalisations pratiques en infrastructure informatique</p>
+            </div>
+            
+            <div class="projects-grid">
+                <div class="project-card fade-in">
+                    <div class="project-img">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Infrastructure d'Entreprise</h3>
+                        <p>Conception et déploiement d'une infrastructure réseau complète pour une PME avec serveurs, switchs, routeurs et solution de sauvegarde.</p>
+                        <div class="project-tags">
+                            <span class="tag">Windows Server</span>
+                            <span class="tag">Active Directory</span>
+                            <span class="tag">Cisco</span>
+                            <span class="tag">Backup</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card fade-in">
+                    <div class="project-img">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Sécurisation Réseau</h3>
+                        <p>Mise en place d'une politique de sécurité complète avec firewall, VPN, authentification forte et monitoring des activités suspectes.</p>
+                        <div class="project-tags">
+                            <span class="tag">Firewall</span>
+                            <span class="tag">VPN</span>
+                            <span class="tag">Monitoring</span>
+                            <span class="tag">Sécurité</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card fade-in">
+                    <div class="project-img">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Virtualisation</h3>
+                        <p>Migration d'une infrastructure physique vers une solution virtualisée avec Hyper-V et gestion centralisée des machines virtuelles.</p>
+                        <div class="project-tags">
+                            <span class="tag">Hyper-V</span>
+                            <span class="tag">Virtualisation</span>
+                            <span class="tag">Migration</span>
+                            <span class="tag">Infrastructure</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+
+        <!-- Section Soft Skills -->
+        <section id="soft-skills">
+            <div class="section-title">
+                <h2>Soft skills</h2>
+                <p>Mes qualités professionnelles en milieu informatique</p>
+            </div>
+            
+            <div class="soft-skills-grid">
+                <div class="soft-skill-item fade-in">
+                    <div class="soft-skill-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h4>Résolution de Problèmes</h4>
+                    <p>Diagnostic et correction rapide des pannes réseau et systèmes avec une approche méthodique.</p>
+                </div>
+                <div class="soft-skill-item fade-in">
+                    <div class="soft-skill-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h4>Veille Technologique</h4>
+                    <p>Curiosité constante pour les nouvelles technologies et tendances en réseaux et sécurité.</p>
+                </div>
+                <div class="soft-skill-item fade-in">
+                    <div class="soft-skill-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h4>Travail d'Équipe</h4>
+                    <p>Collaboration efficace avec les équipes techniques et capacité à expliquer les concepts complexes.</p>
+                </div>
+                <div class="soft-skill-item fade-in">
+                    <div class="soft-skill-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <h4>Gestion de Projet</h4>
+                    <p>Planification et exécution de projets d'infrastructure dans les délais et budgets impartis.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Navigation</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
+                        <li><a href="portfolio.html"><i class="fas fa-briefcase"></i> Portfolio</a></li>
+                        <li><a href="projets.html"><i class="fas fa-project-diagram"></i> Projets</a></li>
+                        <li><a href="competences.html"><i class="fas fa-cogs"></i> Compétences</a></li>
+                        <li><a href="veille.html"><i class="fas fa-binoculars"></i> Veille</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            onlyothniel@gmail.com
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            France
+                        </li>
+                    </ul>
+                    <div class="social-links">
+                         <a href="https://www.linkedin.com/in/junior-gbokossou-850b43275" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Junior GBOKOSSOU. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu hamburger pour mobile
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Fermer le menu en cliquant sur un lien
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Animation au défilement pour la navbar
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.08)';
+            }
+        });
+
+        // Animation des cercles de compétences
+        function animateSkillCircles() {
+            document.querySelectorAll('.circle-progress').forEach(circle => {
+                const computedStyle = getComputedStyle(circle);
+                const percentage = computedStyle.getPropertyValue('--percentage');
+                circle.style.setProperty('--percentage', '0%');
+                
+                setTimeout(() => {
+                    circle.style.setProperty('--percentage', percentage);
+                }, 100);
+            });
+        }
+
+        // Observer pour animer les cercles quand ils deviennent visibles
+        const skillsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateSkillCircles();
+                    skillsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        // Observer la section compétences
+        const skillsSection = document.getElementById('competences-techniques');
+        if (skillsSection) {
+            skillsObserver.observe(skillsSection);
+        }
+
+        // Animation des éléments au défilement
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationDelay = '0.2s';
+                    entry.target.classList.add('fade-in');
+                    fadeObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        fadeElements.forEach(element => {
+            element.style.opacity = '0';
+            fadeObserver.observe(element);
+        });
+
+        // Simulation de téléchargement
+        document.getElementById('download-cv').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const originalText = this.innerHTML;
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Téléchargement...';
+            
+            setTimeout(() => {
+                this.innerHTML = originalText;
+                alert('CV téléchargé avec succès !');
+            }, 2000);
+        });
+
+        document.getElementById('download-synthesis').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const originalText = this.innerHTML;
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Téléchargement...';
+            
+            setTimeout(() => {
+                this.innerHTML = originalText;
+                alert('Tableau de synthèse téléchargé avec succès !');
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

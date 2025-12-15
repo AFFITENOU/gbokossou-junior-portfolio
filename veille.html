@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Junior GBOKOSSOU</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bleu-nuit: #1C2A39;
+            --gris-acier: #A8B0B9;
+            --bleu-ardoise: #3E4C59;
+            --blanc-casse: #F4F5F7;
+            --taupe-fonce: #7A7465;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --radius: 16px;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--bleu-nuit);
+            background: var(--blanc-casse);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header et Navigation */
+        header {
+            background: var(--bleu-nuit);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--blanc-casse);
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            font-size: 1.8rem;
+            color: var(--taupe-fonce);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            color: var(--blanc-casse);
+            font-weight: 600;
+            text-decoration: none;
+            position: relative;
+            transition: var(--transition);
+            padding: 8px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--taupe-fonce);
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--taupe-fonce);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--blanc-casse);
+            transition: var(--transition);
+            border-radius: 3px;
+        }
+
+        /* Section Hero Veille */
+        #veille-hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--bleu-nuit) 0%, var(--bleu-ardoise) 100%);
+            position: relative;
+            overflow: hidden;
+            padding-top: 100px;
+            margin-bottom: 60px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+            text-align: center;
+            margin: 0 auto;
+            color: var(--blanc-casse);
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero-content h1 span {
+            color: var(--taupe-fonce);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            color: var(--gris-acier);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Section Méthodologie */
+        .section-title {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            color: var(--bleu-nuit);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 5px;
+            background: var(--taupe-fonce);
+            border-radius: 5px;
+        }
+
+        .section-title p {
+            color: var(--bleu-ardoise);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .methodologie-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 100px;
+        }
+
+        .method-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .method-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Style standard des icônes (remis par défaut) */
+        .method-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--taupe-fonce);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 2rem;
+            transition: var(--transition);
+        }
+
+        .method-card:hover .method-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .method-card h3 {
+            color: var(--bleu-nuit);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .method-card p {
+            color: var(--bleu-ardoise);
+            line-height: 1.6;
+        }
+
+        /* Section Articles */
+        .articles-filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 12px 24px;
+            background: white;
+            border: 2px solid var(--gris-acier);
+            border-radius: 50px;
+            color: var(--bleu-ardoise);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--taupe-fonce);
+            color: white;
+            border-color: var(--taupe-fonce);
+            transform: translateY(-3px);
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 30px;
+            margin-bottom: 100px;
+        }
+
+        .article-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .article-card.hidden {
+            display: none;
+        }
+
+        .article-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .article-header {
+            padding: 25px 25px 0;
+        }
+
+        .article-category {
+            display: inline-block;
+            background: rgba(168, 176, 185, 0.2);
+            color: var(--bleu-ardoise);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            border: 1px solid rgba(168, 176, 185, 0.3);
+        }
+
+        .article-card h3 {
+            color: var(--bleu-nuit);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            line-height: 1.4;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--gris-acier);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .article-content {
+            padding: 0 25px 25px;
+        }
+
+        .article-content p {
+            color: var(--bleu-ardoise);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .article-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            background: rgba(168, 176, 185, 0.2);
+            color: var(--bleu-ardoise);
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid rgba(168, 176, 185, 0.3);
+        }
+
+        /* Style pour le bouton de téléchargement */
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: var(--taupe-fonce);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: var(--transition);
+            border: 2px solid var(--taupe-fonce);
+            width: 100%; /* Optionnel: Pleine largeur sur mobile */
+        }
+
+        .download-btn:hover {
+            background-color: transparent;
+            color: var(--taupe-fonce);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(122, 116, 101, 0.3);
+        }
+
+        @media (min-width: 768px) {
+            .download-btn {
+                width: auto; /* Largeur auto sur desktop */
+            }
+        }
+
+        /* Section Outils */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 100px;
+        }
+
+        .tool-category {
+            margin-bottom: 40px;
+        }
+
+        .tool-category h3 {
+            color: var(--bleu-nuit);
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tool-category h3 i {
+            color: var(--taupe-fonce);
+        }
+
+        .tool-items {
+            display: grid;
+            gap: 15px;
+        }
+
+        .tool-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: var(--radius);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .tool-item:hover {
+            transform: translateX(5px);
+            box-shadow: var(--shadow);
+        }
+
+        .tool-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--taupe-fonce);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .tool-info h4 {
+            color: var(--bleu-nuit);
+            margin-bottom: 5px;
+            font-size: 1rem;
+        }
+
+        .tool-info p {
+            color: var(--bleu-ardoise);
+            font-size: 0.85rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bleu-nuit);
+            color: var(--blanc-casse);
+            padding: 80px 0 30px;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--taupe-fonce);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        .footer-section h3 {
+            color: var(--taupe-fonce);
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
+            font-size: 1.4rem;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--gris-acier);
+            border-radius: 3px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--gris-acier);
+            transition: var(--transition);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a:hover {
+            color: var(--taupe-fonce);
+            transform: translateX(5px);
+        }
+
+        .contact-info {
+            list-style: none;
+        }
+
+        .contact-info li {
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: var(--gris-acier);
+        }
+
+        .contact-info i {
+            color: var(--taupe-fonce);
+            width: 20px;
+            font-size: 1.1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        .social-links a:hover {
+            background: var(--taupe-fonce);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.95rem;
+            color: var(--gris-acier);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+
+            .articles-grid {
+                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: var(--bleu-nuit);
+                flex-direction: column;
+                padding: 100px 20px 20px;
+                box-shadow: var(--shadow);
+                text-align: center;
+                gap: 25px;
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(8px, 8px);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -7px);
+            }
+
+            .hero-content h1 {
+                font-size: 2.4rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+
+            .methodologie-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .articles-filters {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .filter-btn {
+                width: 200px;
+                text-align: center;
+            }
+
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <i class="fas fa-network-wired"></i>
+                    Junior GBOKOSSOU
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="projets.html">Projets</a></li>
+                    <li><a href="competences.html">Compétences</a></li>
+                    <li><a href="veille.html" class="active">Veille</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section id="veille-hero">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1>Ma <span>Veille</span> Technologique</h1>
+                <p>Restez informé des dernières tendances en réseaux, systèmes et cybersécurité grâce à ma veille technologique.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="methodologie-grid">
+            <div class="method-card fade-in">
+                <div class="method-icon">
+                    <i class="fab fa-google"></i>
+                </div>
+                <h3>Google Alerts</h3>
+                <p>Surveillance quotidienne des mots-clés stratégiques via les alertes automatisées pour ne rien rater de l'actualité.</p>
+            </div>
+
+            <div class="method-card fade-in">
+                <div class="method-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Fortinet</h3>
+                <p>Suivi des bulletins de sécurité, participation aux formations NSE et analyse des mises à jour constructeur.</p>
+            </div>
+
+            <div class="method-card fade-in">
+                <div class="method-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3>Obsidian</h3>
+                <p>Organisation de ma base de connaissances et gestion de mes notes techniques (Knowledge Management).</p>
+            </div>
+        </div>
+
+        <section id="articles">
+            <div class="section-title">
+                <h2>Articles Récents</h2>
+                <p>Découvrez mes dernières découvertes et analyses technologiques</p>
+            </div>
+
+            <div class="articles-filters">
+                <button class="filter-btn active" data-filter="all">Tous les articles</button>
+                <button class="filter-btn" data-filter="reseau">Réseaux</button>
+                <button class="filter-btn" data-filter="securite">Cybersécurité</button>
+                <button class="filter-btn" data-filter="cloud">Cloud</button>
+            </div>
+
+            <div class="articles-grid">
+                <div class="article-card fade-in" data-category="reseau">
+                    <div class="article-header">
+                        <span class="article-category">Réseaux</span>
+                        <h3>Pots de Miel : La révolution dans la cybersécurité défensive</h3>
+                        <div class="article-meta">
+                            <span>1 Août 2025</span>
+                        </div>
+                    </div>
+                    <div class="article-content">
+                        <p>Analyse complète des systèmes leurres (Honeypots) et leur impact sur la stratégie de sécurité des entreprises, pour piéger les attaquants et collecter de précieuses renseignements sur les menaces.</p>
+                        <div class="article-tags">
+                            <span class="tag">Cybersécurité</span>
+                            <span class="tag">Pot de Miel</span>
+                            <span class="tag">Intelligence des menaces</span>
+                        </div>
+                        <a href="/fichiers/LES HONEYPOTS  RÉVOLUTION DE LA CYBERSÉCURITÉ DÉFENSIVE.pdf" class="download-btn">
+                            Lire ma documentation
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                </div>
+        </section>
+
+        <section id="outils">
+            <div class="section-title">
+                <h2>Mes Outils de Veille</h2>
+                <p>Les plateformes et ressources que j'utilise pour me tenir informé</p>
+            </div>
+            <div class="tools-grid">
+                <div class="tool-category">
+                    <h3><i class="fas fa-newspaper"></i> Actualités & Blogs</h3>
+                    <div class="tool-items">
+                        <div class="tool-item">
+                            <div class="tool-icon">
+                                <i class="fas fa-mask"></i>
+                            </div>
+                            <div class="tool-info">
+                                <h4>Acalvio</h4>
+                                <p>Solutions de Cyber Deception & Autonomous Deception</p>
+                            </div>
+                        </div>
+
+                        <div class="tool-item">
+                            <div class="tool-icon">
+                                <i class="fas fa-shield-virus"></i>
+                            </div>
+                            <div class="tool-info">
+                                <h4>Fortinet</h4>
+                                <p>Suivi des analyses de menaces (FortiGuard Labs) et actualités.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tool-category">
+                    <h3><i class="fas fa-network-wired"></i> Réseaux & Communautés</h3>
+                    <div class="tool-items">
+                        <div class="tool-item">
+                            <div class="tool-icon">
+                                <i class="fab fa-linkedin"></i>
+                            </div>
+                            <div class="tool-info">
+                                <h4>LinkedIn</h4>
+                                <p>Réseau professionnel et groupes techniques réseaux</p>
+                            </div>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-icon">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <div class="tool-info">
+                                <h4>GitHub</h4>
+                                <p>Scripts d'automatisation et outils réseaux open source</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Navigation</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
+                        <li><a href="portfolio.html"><i class="fas fa-briefcase"></i> Portfolio</a></li>
+                        <li><a href="projets.html"><i class="fas fa-project-diagram"></i> Projets</a></li>
+                        <li><a href="competences.html"><i class="fas fa-cogs"></i> Compétences</a></li>
+                        <li><a href="veille.html"><i class="fas fa-binoculars"></i> Veille</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            onlyothniel@gmail.com
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            France
+                        </li>
+                    </ul>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/junior-gbokossou-850b43275" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Junior GBOKOSSOU. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu hamburger pour mobile
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Fermer le menu en cliquant sur un lien
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Animation au défilement pour la navbar
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.08)';
+            }
+        });
+
+        // Filtrage des articles
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const articleCards = document.querySelectorAll('.article-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Retirer la classe active de tous les boutons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Ajouter la classe active au bouton cliqué
+                button.classList.add('active');
+
+                const filterValue = button.getAttribute('data-filter');
+
+                articleCards.forEach(card => {
+                    if (filterValue === 'all') {
+                        card.classList.remove('hidden');
+                    } else {
+                        if (card.getAttribute('data-category') === filterValue) {
+                            card.classList.remove('hidden');
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    }
+                });
+            });
+        });
+
+        // Animation des éléments au défilement
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationDelay = '0.2s';
+                    entry.target.classList.add('fade-in');
+                    fadeObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        fadeElements.forEach(element => {
+            element.style.opacity = '0';
+            fadeObserver.observe(element);
+        });
+    </script>
+</body>
+</html>
