@@ -541,6 +541,184 @@
             font-size: 1.3rem;
         }
 
+        /* Section Entreprises - Version repensée */
+        .entreprises-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 100px;
+        }
+
+        .entreprise-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 35px 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .entreprise-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .entreprise-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--taupe-fonce);
+        }
+
+        .entreprise-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 15px;
+        }
+
+        .entreprise-logo {
+            width: 70px;
+            height: 70px;
+            background: var(--blanc-casse);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid var(--taupe-fonce);
+            color: var(--taupe-fonce);
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .entreprise-info {
+            flex: 1;
+        }
+
+        .entreprise-info h3 {
+            color: var(--bleu-nuit);
+            margin-bottom: 5px;
+            font-size: 1.4rem;
+        }
+
+        .entreprise-secteur {
+            color: var(--vert-professionnel);
+            font-weight: 600;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .entreprise-secteur i {
+            color: var(--taupe-fonce);
+            font-size: 0.9rem;
+        }
+
+        .entreprise-description {
+            color: var(--bleu-ardoise);
+            margin-bottom: 20px;
+            line-height: 1.6;
+            border-left: 3px solid var(--taupe-fonce);
+            padding-left: 15px;
+            font-style: italic;
+        }
+
+        .entreprise-objectifs {
+            background: var(--blanc-casse);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .entreprise-objectifs h4 {
+            color: var(--taupe-fonce);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .entreprise-objectifs h4 i {
+            font-size: 1.2rem;
+        }
+
+        .entreprise-objectifs ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .entreprise-objectifs li {
+            color: var(--bleu-ardoise);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+        }
+
+        .entreprise-objectifs li i {
+            color: var(--vert-professionnel);
+            font-size: 0.9rem;
+            width: 20px;
+        }
+
+        .entreprise-projets {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .projet-tag {
+            background: var(--taupe-fonce);
+            color: white;
+            padding: 6px 15px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .projet-tag i {
+            font-size: 0.8rem;
+        }
+
+        .entreprise-avenir {
+            background: linear-gradient(135deg, var(--bleu-nuit) 0%, var(--bleu-ardoise) 100%);
+            border-radius: 12px;
+            padding: 20px;
+            color: var(--blanc-casse);
+        }
+
+        .entreprise-avenir h4 {
+            color: var(--taupe-fonce);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .entreprise-avenir p {
+            color: var(--gris-acier);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .entreprise-avenir i {
+            color: var(--taupe-fonce);
+        }
+
         /* Footer */
         footer {
             background: var(--bleu-nuit);
@@ -781,6 +959,15 @@
             .experience-icon {
                 margin-bottom: 15px;
             }
+
+            .entreprises-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .entreprise-header {
+                flex-direction: column;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -799,6 +986,8 @@
                     <li><a href="projets.html">Projets</a></li>
                     <li><a href="competences.html">Compétences</a></li>
                     <li><a href="veille.html">Veille</a></li>
+                    <!-- NOUVEAU BOUTON ENTREPRISE -->
+                    <li><a href="#entreprises-section">Entreprise</a></li>
                 </ul>
                 <div class="hamburger">
                     <span></span>
@@ -830,6 +1019,10 @@
             <button class="portfolio-nav-btn" data-section="experiences">
                 <i class="fas fa-briefcase"></i>
                 Expériences
+            </button>
+            <button class="portfolio-nav-btn" data-section="entreprises">
+                <i class="fas fa-building"></i>
+                Entreprises
             </button>
             <button class="portfolio-nav-btn" data-section="download">
                 <i class="fas fa-download"></i>
@@ -900,22 +1093,26 @@
                         </div>
                     </div>
                 </div>
-                
-                <!-- Certification 2 -->
-                <!-- <div class="timeline-item fade-in">
-                    <div class="timeline-dot"></div>
+                <div class="timeline-item fade-in">
                     <div class="timeline-content">
-                        <span class="timeline-date">2023</span>
-                        <h3>Linux Essentials</h3>
-                        <h4>Linux Professional Institute</h4>
-                        <p>Certification validant les compétences fondamentales en administration système Linux et en ligne de commande.</p>
+                        <span class="timeline-date">2026</span>
+                        <h3>Administrateur windows server 2019</h3>
+                        <h4>Certificat</h4>
+                        <p></p>
                         <div class="timeline-tags">
-                            <span class="timeline-tag">Linux</span>
-                            <span class="timeline-tag">Administration</span>
-                            <span class="timeline-tag">Terminal</span>
-                        </div> -->
+                            <span class="timeline-tag">Windows server</span>
+                            <span class="timeline-tag">Windows</span>
+
+                        </div>
                     </div>
                 </div>
+                 <div class="timeline-content">
+                        <span class="timeline-date">2026</span>
+                        <h3>Administrateur système Linux</h3>
+                        <h4>Certificat</h4>
+                        <p></p>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">Linux</span>
             </div>
         </section>
 
@@ -969,47 +1166,59 @@
                     <div class="experience-skills">
                         <span class="skill-tag">Support Technique</span>
                         <span class="skill-tag">Réseaux</span>
-                        
                     </div>
                 </div>
-                
-                <!-- Expérience 3 -->
-                <!-- <div class="experience-card fade-in">
-                    <div class="experience-header">
-                        <div class="experience-icon">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <div class="experience-title">
-                            <h3>Projet Sécurité Réseau</h3>
-                            <h4>Projet Académique</h4>
-                            <span class="experience-date">Septembre 2023 - Décembre 2023</span>
-                        </div>
-                    </div>
-                    <div class="experience-description">
-                        <p>Conception et mise en œuvre d'une infrastructure réseau sécurisée avec firewall, VPN et système de détection d'intrusion. Audit de sécurité et recommandations d'amélioration.</p>
-                    </div>
-                    <div class="experience-skills">
-                        <span class="skill-tag">Sécurité</span>
-                        <span class="skill-tag">Firewall</span>
-                        <span class="skill-tag">VPN</span>
-                        <span class="skill-tag">Audit</span>
-                        <span class="skill-tag">PfSense</span>
-                    </div>
-                </div>
-            </div> -->
+            </div>
         </section>
 
-        <!-- Section Téléchargement -->
+        <!-- NOUVELLE SECTION ENTREPRISES -->
+        <section id="entreprises-section" class="portfolio-section">
+            <div class="section-title">
+                <h2>Entreprises</h2>
+                <p>Découvrez les entreprises avec lesquelles j'ai collaboré, leurs objectifs, leurs projets et leur vision d'avenir</p>
+            </div>
+            
+            <div class="entreprises-grid">
+                <!-- Entreprise 1 - Ouéso -->
+                <div class="entreprise-card fade-in">
+                    <div class="entreprise-header">
+                        <div class="entreprise-logo">
+                            <i class="fas fa-store"></i>
+                        </div>
+                        <div class="entreprise-info">
+                            <h3>Ouéso</h3>
+                            <div class="entreprise-secteur">
+                                <i class="fas fa-tag"></i>
+                                E-commerce, Art & Solutions Digitales
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="entreprise-description">
+                        Écosystème hybride alliant une marque pionnière d'art mural afro-contemporain et une agence de services digitaux dédiée à l'accompagnement des entrepreneurs africains dans leur transformation numérique.
+                    </div>
+
+                    <div class="entreprise-objectifs">
+                        <h4><i class="fas fa-bullseye"></i> Objectifs</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Valoriser l'héritage culturel : Promouvoir les artistes africains et la richesse esthétique du continent à travers des produits de décoration accessibles.</li>
+                            <li><i class="fas fa-check"></i> Accélérer la digitalisation des PME : Fournir des outils techniques "clés en main" (sites web, studios photo, gestion de réseaux sociaux) pour faciliter le lancement de business e-commerce.</li>
+                            <li><i class="fas fa-check"></i> Accompagner la croissance des marques "Made in Africa" en les connectant aux standards du commerce électronique mondial.</li>
+                    </div>
+                </div>
+            </div>
+        </section>
+         <!-- Section Téléchargement -->
         <section id="download-section" class="portfolio-section">
             <div class="download-section fade-in">
                 <h3>Téléchargez Mon Profil</h3>
                 <p>Accédez à mon CV détaillé, mon tableau de synthèse et mes documents professionnels pour en savoir plus sur mon parcours et mes compétences</p>
                 <div class="download-options">
-                    <a href="fichiers/cv_junior_gbokossou.pdf" class="download-btn" target="_blank">
+                    <a href="/fichiers/Junior GBOKOSSOU CV.pdf" class="download-btn" id="download-cv">
                         <i class="fas fa-file-pdf"></i>
                         Télécharger mon CV
-                     </a>
-                    <a href="fichiers/tableau_synthese.pdf" class="download-btn secondary" target="_blank">
+                    </a>
+                    <a href="/fichiers/Tableau de synthese- GBOKOSSOU Junior.pdf" class="download-btn secondary" id="download-synthesis">
                         <i class="fas fa-table"></i>
                         Tableau de Synthèse
                     </a>
@@ -1130,7 +1339,7 @@
             e.preventDefault();
             // Simuler le téléchargement (remplacer par vos vrais fichiers)
             const link = document.createElement('a');
-            link.href = 'fichiers/Tableau de synthese- GBOKOSSOU Junior.pdf" class="download-btn secondary" id="download-synthesis"'; // Remplacez par le chemin vers votre CV
+            link.href = '#'; // Remplacez par le chemin vers votre CV
             link.download = 'CV_Junior_GBOKOSSOU.pdf';
             link.click();
         });
@@ -1138,13 +1347,19 @@
         document.getElementById('download-synthesis').addEventListener('click', function(e) {
             e.preventDefault();
             // Simuler le téléchargement (remplacer par vos vrais fichiers)
-            
+            const link = document.createElement('a');
+            link.href = '#'; // Remplacez par le chemin vers votre tableau de synthèse
+            link.download = 'Tableau_Synthese_Junior_GBOKOSSOU.pdf';
+            link.click();
         });
 
         document.getElementById('download-portfolio').addEventListener('click', function(e) {
             e.preventDefault();
             // Simuler le téléchargement (remplacer par vos vrais fichiers)
-            
+            const link = document.createElement('a');
+            link.href = '#'; // Remplacez par le chemin vers votre portfolio complet
+            link.download = 'Portfolio_Junior_GBOKOSSOU.pdf';
+            link.click();
         });
 
         // Animation au chargement de la page
@@ -1153,7 +1368,7 @@
         });
     </script>
 </body>
+</html>            
+                
 
-</html>
-
-
+                   
