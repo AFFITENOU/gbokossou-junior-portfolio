@@ -166,17 +166,6 @@
             margin-right: auto;
         }
 
-        .hero-badge {
-            display: inline-block;
-            background: rgba(122, 116, 101, 0.2);
-            color: var(--taupe-fonce);
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            border: 1px solid rgba(122, 116, 101, 0.3);
-        }
-
         /* Navigation des sections */
         .portfolio-nav {
             display: flex;
@@ -349,6 +338,250 @@
             font-size: 0.8rem;
             font-weight: 500;
             border: 1px solid var(--gris-acier);
+        }
+
+        /* =============================================
+           BLOC FORMATION IPSSI - NOUVEAU
+           ============================================= */
+        .formation-bloc {
+            max-width: 1000px;
+            margin: 0 auto 80px;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .formation-bloc-header {
+            background: linear-gradient(135deg, var(--bleu-nuit) 0%, var(--bleu-ardoise) 100%);
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .formation-bloc-header::before {
+            content: '';
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: rgba(122, 116, 101, 0.15);
+        }
+
+        .formation-bloc-header::after {
+            content: '';
+            position: absolute;
+            bottom: -60px;
+            right: 80px;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: rgba(122, 116, 101, 0.08);
+        }
+
+        .formation-school-logo {
+            width: 80px;
+            height: 80px;
+            background: rgba(255,255,255,0.12);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid var(--taupe-fonce);
+            flex-shrink: 0;
+            z-index: 1;
+        }
+
+        .formation-school-logo i {
+            font-size: 2.2rem;
+            color: var(--taupe-fonce);
+        }
+
+        .formation-school-info {
+            z-index: 1;
+        }
+
+        .formation-school-info h3 {
+            color: var(--blanc-casse);
+            font-size: 1.8rem;
+            margin-bottom: 6px;
+        }
+
+        .formation-school-info .school-subtitle {
+            color: var(--taupe-fonce);
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+        }
+
+        .formation-school-info .school-location {
+            color: var(--gris-acier);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .formation-badge {
+            margin-left: auto;
+            background: var(--taupe-fonce);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            z-index: 1;
+            white-space: nowrap;
+        }
+
+        .formation-intro {
+            padding: 30px 40px;
+            background: var(--blanc-casse);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .formation-intro p {
+            color: var(--bleu-ardoise);
+            font-size: 1rem;
+            line-height: 1.7;
+            border-left: 4px solid var(--taupe-fonce);
+            padding-left: 16px;
+            font-style: italic;
+        }
+
+        .formation-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+
+        .formation-option {
+            padding: 35px 40px;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .formation-option:first-child {
+            border-right: 1px solid rgba(0,0,0,0.08);
+        }
+
+        .formation-option:hover {
+            background: rgba(122, 116, 101, 0.04);
+        }
+
+        .formation-option-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--bleu-nuit);
+            color: var(--taupe-fonce);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 18px;
+        }
+
+        .formation-option h4 {
+            color: var(--bleu-nuit);
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+        }
+
+        .formation-option .option-full-name {
+            color: var(--taupe-fonce);
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .formation-option p {
+            color: var(--bleu-ardoise);
+            font-size: 0.95rem;
+            line-height: 1.65;
+            margin-bottom: 20px;
+        }
+
+        .formation-competences {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+        .formation-competences li {
+            color: var(--bleu-ardoise);
+            font-size: 0.9rem;
+            padding: 7px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            border-bottom: 1px dashed rgba(168, 176, 185, 0.4);
+        }
+
+        .formation-competences li:last-child {
+            border-bottom: none;
+        }
+
+        .formation-competences li i {
+            color: var(--vert-professionnel);
+            margin-top: 3px;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        .formation-option-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin-top: 15px;
+        }
+
+        .formation-option-tag {
+            background: var(--blanc-casse);
+            color: var(--bleu-ardoise);
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.78rem;
+            font-weight: 500;
+            border: 1px solid var(--gris-acier);
+            transition: var(--transition);
+        }
+
+        .formation-option-tag:hover {
+            background: var(--taupe-fonce);
+            color: white;
+            border-color: var(--taupe-fonce);
+        }
+
+        .formation-footer {
+            padding: 25px 40px;
+            background: var(--blanc-casse);
+            border-top: 1px solid rgba(0,0,0,0.06);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .formation-footer i {
+            color: var(--taupe-fonce);
+            font-size: 1.1rem;
+        }
+
+        .formation-footer span {
+            color: var(--bleu-ardoise);
+            font-size: 0.95rem;
+        }
+
+        .formation-footer strong {
+            color: var(--bleu-nuit);
         }
 
         /* Section Expériences */
@@ -541,7 +774,7 @@
             font-size: 1.3rem;
         }
 
-        /* Section Entreprises - Version repensée */
+        /* Section Entreprises */
         .entreprises-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -645,10 +878,6 @@
             gap: 8px;
         }
 
-        .entreprise-objectifs h4 i {
-            font-size: 1.2rem;
-        }
-
         .entreprise-objectifs ul {
             list-style: none;
             padding: 0;
@@ -667,56 +896,6 @@
             color: var(--vert-professionnel);
             font-size: 0.9rem;
             width: 20px;
-        }
-
-        .entreprise-projets {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .projet-tag {
-            background: var(--taupe-fonce);
-            color: white;
-            padding: 6px 15px;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .projet-tag i {
-            font-size: 0.8rem;
-        }
-
-        .entreprise-avenir {
-            background: linear-gradient(135deg, var(--bleu-nuit) 0%, var(--bleu-ardoise) 100%);
-            border-radius: 12px;
-            padding: 20px;
-            color: var(--blanc-casse);
-        }
-
-        .entreprise-avenir h4 {
-            color: var(--taupe-fonce);
-            margin-bottom: 10px;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .entreprise-avenir p {
-            color: var(--gris-acier);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin: 0;
-        }
-
-        .entreprise-avenir i {
-            color: var(--taupe-fonce);
         }
 
         /* Footer */
@@ -838,14 +1017,8 @@
 
         /* Animations */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
 
         .fade-in {
@@ -855,43 +1028,27 @@
 
         /* Responsive */
         @media (max-width: 968px) {
-            .hero-content h1 {
-                font-size: 2.8rem;
-            }
-            
-            .timeline::before {
-                left: 30px;
-            }
-            
-            .timeline-dot {
-                left: 30px;
-            }
-            
+            .hero-content h1 { font-size: 2.8rem; }
+            .timeline::before { left: 30px; }
+            .timeline-dot { left: 30px; }
             .timeline-content {
                 width: calc(100% - 80px);
                 margin-left: 80px !important;
                 margin-right: 0 !important;
             }
-            
-            .download-options {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .download-btn {
-                width: 100%;
-                max-width: 300px;
-            }
+            .download-options { flex-direction: column; align-items: center; }
+            .download-btn { width: 100%; max-width: 300px; }
+            .formation-options { grid-template-columns: 1fr; }
+            .formation-option:first-child { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.08); }
+            .formation-badge { display: none; }
         }
 
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
                 position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100vh;
+                top: 0; left: 0;
+                width: 100%; height: 100vh;
                 background: var(--bleu-nuit);
                 flex-direction: column;
                 padding: 100px 20px 20px;
@@ -900,74 +1057,24 @@
                 gap: 25px;
                 z-index: 999;
             }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-
-            .hamburger.active span:nth-child(1) {
-                transform: rotate(45deg) translate(8px, 8px);
-            }
-
-            .hamburger.active span:nth-child(2) {
-                opacity: 0;
-            }
-
-            .hamburger.active span:nth-child(3) {
-                transform: rotate(-45deg) translate(7px, -7px);
-            }
-
-            .hero-content h1 {
-                font-size: 2.4rem;
-            }
-
-            .hero-content p {
-                font-size: 1.1rem;
-            }
-
-            .section-title h2 {
-                font-size: 2.2rem;
-            }
-
-            .portfolio-nav {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .portfolio-nav-btn {
-                width: 200px;
-                text-align: center;
-                justify-content: center;
-            }
-
-            .experiences-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .download-section {
-                padding: 40px 20px;
-            }
-            
-            .experience-header {
-                flex-direction: column;
-            }
-            
-            .experience-icon {
-                margin-bottom: 15px;
-            }
-
-            .entreprises-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .entreprise-header {
-                flex-direction: column;
-                text-align: center;
-            }
+            .nav-links.active { display: flex; }
+            .hamburger { display: flex; }
+            .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(8px, 8px); }
+            .hamburger.active span:nth-child(2) { opacity: 0; }
+            .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
+            .hero-content h1 { font-size: 2.4rem; }
+            .hero-content p { font-size: 1.1rem; }
+            .section-title h2 { font-size: 2.2rem; }
+            .portfolio-nav { flex-direction: column; align-items: center; }
+            .portfolio-nav-btn { width: 200px; text-align: center; justify-content: center; }
+            .experiences-grid { grid-template-columns: 1fr; }
+            .download-section { padding: 40px 20px; }
+            .experience-header { flex-direction: column; }
+            .experience-icon { margin-bottom: 15px; }
+            .entreprises-grid { grid-template-columns: 1fr; }
+            .entreprise-header { flex-direction: column; text-align: center; }
+            .formation-bloc-header { flex-direction: column; text-align: center; gap: 15px; }
+            .formation-intro, .formation-option, .formation-footer { padding: 25px 20px; }
         }
     </style>
 </head>
@@ -982,17 +1089,14 @@
                 </a>
                 <ul class="nav-links">
                     <li><a href="index.html">Accueil</a></li>
-                    <li><a href="portfolio.html" class="active">Portfolio</a></li>
+                    <li><a href="portfolio.html" class="active">Parcours</a></li>
                     <li><a href="projets.html">Projets</a></li>
                     <li><a href="competences.html">Compétences</a></li>
                     <li><a href="veille.html">Veille</a></li>
-                    <!-- NOUVEAU BOUTON ENTREPRISE -->
                     <li><a href="#entreprises-section">Entreprise</a></li>
                 </ul>
                 <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                    <span></span><span></span><span></span>
                 </div>
             </nav>
         </div>
@@ -1002,8 +1106,8 @@
     <section id="portfolio-hero">
         <div class="container">
             <div class="hero-content fade-in">
-                <h1>Mon <span>Portfolio</span></h1>
-                <p>Parcours professionnel <br> Expériences en entreprise  <br> Réalisations dans le domaine des réseaux et systèmes.</p>
+                <h1>Mon <span>Parcours</span></h1>
+                <p>Parcours professionnel <br> Expériences en entreprise <br> Réalisations dans le domaine des réseaux et systèmes.</p>
             </div>
         </div>
     </section>
@@ -1032,13 +1136,111 @@
 
         <!-- Section Parcours -->
         <section id="parcours-section" class="portfolio-section active">
+
+            <!-- TITRE FORMATION -->
             <div class="section-title">
+                <h2>Formation</h2>
+                <p>Ma formation au BTS SIO à l'IPSSI — deux options complémentaires pour maîtriser l'informatique sous tous ses angles</p>
+            </div>
+
+            <!-- =============================================
+                 BLOC FORMATION IPSSI - BTS SIO (SISR & SLAM)
+                 ============================================= -->
+            <div class="formation-bloc fade-in">
+                <!-- En-tête école -->
+                <div class="formation-bloc-header">
+                    <div class="formation-school-logo">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <div class="formation-school-info">
+                        <h3>IPSSI — Saint-Quentin-en-Yvelines</h3>
+                        <div class="school-subtitle">BTS SIO — Services Informatiques aux Organisations</div>
+                        <div class="school-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Saint-Quentin-en-Yvelines, France
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <!-- Intro -->
+                <div class="formation-intro">
+                    <p>Le BTS SIO forme des techniciens supérieurs capables de gérer et développer le système d'information d'une organisation. Il se décline en deux options complémentaires selon le domaine de spécialisation choisi.</p>
+                </div>
+
+                <!-- Les deux options côte à côte -->
+                <div class="formation-options">
+
+                    <!-- Option SISR -->
+                    <div class="formation-option">
+                        <div class="formation-option-badge">
+                            <i class="fas fa-network-wired"></i>
+                            Option SISR
+                        </div>
+                        <h4>Solutions d'Infrastructure, Systèmes et Réseaux</h4>
+                        
+                        <p>Cette option prépare à la conception, au déploiement et à la maintenance des infrastructures informatiques : réseaux locaux, serveurs, sécurité des systèmes et supervision. Elle oriente vers les métiers d'administrateur systèmes & réseaux ou technicien infrastructure.</p>
+                        <ul class="formation-competences">
+                            <li><i class="fas fa-circle"></i> Administration des réseaux (LAN, WAN, VPN)</li>
+                            <li><i class="fas fa-circle"></i> Virtualisation (VMware, Hyper-V, VirtualBox)</li>
+                            <li><i class="fas fa-circle"></i> Gestion des serveurs Windows Server & Linux</li>
+                            <li><i class="fas fa-circle"></i> Sécurité informatique et pare-feu</li>
+                            <li><i class="fas fa-circle"></i> Supervision et monitoring (Zabbix, Nagios)</li>
+                            <li><i class="fas fa-circle"></i> Support technique et helpdesk</li>
+                        </ul>
+                        <div class="formation-option-tags">
+                            <span class="formation-option-tag">Cisco</span>
+                            <span class="formation-option-tag">Linux</span>
+                            <span class="formation-option-tag">Windows Server</span>
+                            <span class="formation-option-tag">Virtualisation</span>
+                            <span class="formation-option-tag">Firewall</span>
+                            <span class="formation-option-tag">Active Directory</span>
+                        </div>
+                    </div>
+
+                    <!-- Option SLAM -->
+                    <div class="formation-option">
+                        <div class="formation-option-badge">
+                            <i class="fas fa-code"></i>
+                            Option SLAM
+                        </div>
+                        <h4>Solutions Logicielles et Applications Métiers</h4>
+                        
+                        <p>Cette option forme au développement d'applications web, mobiles et logicielles adaptées aux besoins des organisations. Elle prépare aux métiers de développeur d'applications, analyste-programmeur ou intégrateur de solutions.</p>
+                        <ul class="formation-competences">
+                            <li><i class="fas fa-circle"></i> Développement web front-end (HTML, CSS, JS)</li>
+                            <li><i class="fas fa-circle"></i> Développement back-end (PHP, Python, Java)</li>
+                            <li><i class="fas fa-circle"></i> Conception de bases de données (SQL, NoSQL)</li>
+                            <li><i class="fas fa-circle"></i> Frameworks modernes (React, Symfony, Laravel)</li>
+                            <li><i class="fas fa-circle"></i> Méthodes agiles et gestion de projets</li>
+                            <li><i class="fas fa-circle"></i> Intégration d'API et services web</li>
+                        </ul>
+                        <div class="formation-option-tags">
+                            <span class="formation-option-tag">PHP</span>
+                            <span class="formation-option-tag">JavaScript</span>
+                            <span class="formation-option-tag">Python</span>
+                            <span class="formation-option-tag">SQL</span>
+                            <span class="formation-option-tag">React</span>
+                            <span class="formation-option-tag">Git</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pied du bloc -->
+                <div class="formation-footer">
+                    <i class="fas fa-info-circle"></i>
+                    <span><strong>Tronc commun :</strong> Les deux options partagent des modules communs — mathématiques, culture générale, expression, anglais, ainsi que les unités professionnelles de support et mise en production de services IT.</span>
+                </div>
+            </div>
+            <!-- FIN BLOC FORMATION IPSSI -->
+
+            <!-- TITRE PARCOURS -->
+            <div class="section-title" style="margin-top: 80px;">
                 <h2>Parcours</h2>
                 <p>Mon cheminement académique et professionnel dans le domaine des réseaux et systèmes</p>
             </div>
-            
+
             <div class="timeline">
-                <!-- Formation 1 -->
                 <div class="timeline-item fade-in">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
@@ -1059,60 +1261,62 @@
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <span class="timeline-date">2023 - 2024</span>
-                        <h3>BTS IDA </h3>
-                        <h4>Agitel Formation - côte d'ivoire</h4>
-                        <p>Formation spécialisée en developpement d'application web et mobile .</p>
+                        <h3>BTS IDA</h3>
+                        <h4>Agitel Formation - Côte d'Ivoire</h4>
+                        <p>Formation spécialisée en développement d'application web et mobile.</p>
                         <div class="timeline-tags">
                             <span class="timeline-tag">Application web</span>
-                            <span class="timeline-tag">appication mobile</span>
+                            <span class="timeline-tag">Application mobile</span>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Formation 2 -->
+
                 <div class="timeline-item fade-in">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <span class="timeline-date">2022 - 2023</span>
                         <h3>Baccalauréat S</h3>
-                        <h4>Thanon Namanko - côte d'ivoire</h4>
+                        <h4>Thanon Namanko - Côte d'Ivoire</h4>
                     </div>
                 </div>
-                
-                <!-- Certification 1 -->
+
                 <div class="timeline-item fade-in">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <span class="timeline-date">2024</span>
                         <h3>GDSC (Google Developer Student Club) Core Member</h3>
                         <h4>Certificate of Completion</h4>
-                        <p></p>
                         <div class="timeline-tags">
-                            <span class="timeline-tag">google</span>
+                            <span class="timeline-tag">Google</span>
                             <span class="timeline-tag">GDSC</span>
                         </div>
                     </div>
                 </div>
+
                 <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <span class="timeline-date">2026</span>
-                        <h3>Administrateur windows server 2019</h3>
+                        <h3>Administrateur Windows Server 2019</h3>
                         <h4>Certificat</h4>
-                        <p></p>
                         <div class="timeline-tags">
-                            <span class="timeline-tag">Windows server</span>
+                            <span class="timeline-tag">Windows Server</span>
                             <span class="timeline-tag">Windows</span>
-
                         </div>
                     </div>
                 </div>
-                 <div class="timeline-content">
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
                         <span class="timeline-date">2026</span>
                         <h3>Administrateur système Linux</h3>
                         <h4>Certificat</h4>
-                        <p></p>
                         <div class="timeline-tags">
                             <span class="timeline-tag">Linux</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -1122,9 +1326,8 @@
                 <h2>Expériences Professionnelles</h2>
                 <p>Mes stages et expériences en entreprise dans le domaine des réseaux et systèmes</p>
             </div>
-            
+
             <div class="experiences-grid">
-                <!-- Expérience 1 -->
                 <div class="experience-card fade-in">
                     <div class="experience-header">
                         <div class="experience-icon">
@@ -1133,22 +1336,21 @@
                         <div class="experience-title">
                             <h3>Stage Assistant informatique</h3>
                             <h4>Ouéso</h4>
-                            <span class="experience-date">Avril 2025 </span>
+                            <span class="experience-date">Avril 2025</span>
                         </div>
                     </div>
                     <div class="experience-description">
-                        <p> Assistant support, explication et aide aux clients. réalisation des tâches quotidienne, Mise à jouret et mise en place de service sur plateforme web, veuiller au bon fonctionnement des outils et à la résolution en cas de panne. </p>
+                        <p>Assistant support, explication et aide aux clients. Réalisation des tâches quotidiennes, mise à jour et mise en place de service sur plateforme web, veiller au bon fonctionnement des outils et à la résolution en cas de panne.</p>
                     </div>
                     <div class="experience-skills">
                         <span class="skill-tag">Prestashop</span>
-                        <span class="skill-tag">travail d'équipe</span>
+                        <span class="skill-tag">Travail d'équipe</span>
                         <span class="skill-tag">Support client</span>
                         <span class="skill-tag">Technicien support</span>
                         <span class="skill-tag">Réseaux</span>
                     </div>
                 </div>
-                
-                <!-- Expérience 2 -->
+
                 <div class="experience-card fade-in">
                     <div class="experience-header">
                         <div class="experience-icon">
@@ -1156,12 +1358,12 @@
                         </div>
                         <div class="experience-title">
                             <h3>Technicien Systèmes & Réseaux</h3>
-                            <h4>SIPSSI SQY - projet pédagogique</h4>
+                            <h4>IPSSI SQY - projet pédagogique</h4>
                             <span class="experience-date">Janvier 2025</span>
                         </div>
                     </div>
                     <div class="experience-description">
-                        <p>Configuration de serveurs Web sous Apache/Nginx, monitoring, supervision et gestion des tickets</p>
+                        <p>Configuration de serveurs Web sous Apache/Nginx, monitoring, supervision et gestion des tickets.</p>
                     </div>
                     <div class="experience-skills">
                         <span class="skill-tag">Support Technique</span>
@@ -1171,15 +1373,14 @@
             </div>
         </section>
 
-        <!-- NOUVELLE SECTION ENTREPRISES -->
+        <!-- Section Entreprises -->
         <section id="entreprises-section" class="portfolio-section">
             <div class="section-title">
                 <h2>Entreprises</h2>
                 <p>Découvrez les entreprises avec lesquelles j'ai collaboré, leurs objectifs, leurs projets et leur vision d'avenir</p>
             </div>
-            
+
             <div class="entreprises-grid">
-                <!-- Entreprise 1 - Ouéso -->
                 <div class="entreprise-card fade-in">
                     <div class="entreprise-header">
                         <div class="entreprise-logo">
@@ -1202,35 +1403,35 @@
                         <h4><i class="fas fa-bullseye"></i> Objectifs</h4>
                         <ul>
                             <li><i class="fas fa-check"></i> Valoriser l'héritage culturel : Promouvoir les artistes africains et la richesse esthétique du continent à travers des produits de décoration accessibles.</li>
-                            <li><i class="fas fa-check"></i> Accélérer la digitalisation des PME : Fournir des outils techniques "clés en main" (sites web, studios photo, gestion de réseaux sociaux) pour faciliter le lancement de business e-commerce.</li>
+                            <li><i class="fas fa-check"></i> Accélérer la digitalisation des PME : Fournir des outils techniques "clés en main" pour faciliter le lancement de business e-commerce.</li>
                             <li><i class="fas fa-check"></i> Accompagner la croissance des marques "Made in Africa" en les connectant aux standards du commerce électronique mondial.</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </section>
-         <!-- Section Téléchargement -->
+
+        <!-- Section Téléchargement -->
         <section id="download-section" class="portfolio-section">
             <div class="download-section fade-in">
                 <h3>Téléchargez Mon Profil</h3>
                 <p>Accédez à mon CV détaillé, mon tableau de synthèse et mes documents professionnels pour en savoir plus sur mon parcours et mes compétences</p>
                 <div class="download-options">
-                    <a href="fichiers/cv-junior-gbokossou.pdf" class="download-btn" download="cv-junior-gbokossou.pdf">
-                         <i class="fas fa-file-pdf"></i>
-                            Télécharger mon CV
+                    <a href="/fichiers/cv_junior_gbokossou.pdf" class="download-btn" id="download-cv">
+                        <i class="fas fa-file-pdf"></i>
+                        Télécharger mon CV
                     </a>
-
-                    <a href="fichiers/tableau-de-synthese-gbokossou-junior.pdf" class="download-btn secondary" download="tableau-de-synthese-gbokossou-junior.pdf">
+                    <a href="/fichiers/tableau-de_synthese_gbokossou_junior.pdf" class="download-btn secondary" id="download-synthesis">
                         <i class="fas fa-table"></i>
-                            Tableau de Synthèse
-                     </a>
-                    
+                        Tableau de Synthèse
+                    </a>
                 </div>
             </div>
         </section>
     </div>
 
     <!-- Footer -->
-     <footer>
+    <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
@@ -1276,7 +1477,6 @@
             navLinks.classList.toggle('active');
         });
 
-        // Fermer le menu mobile en cliquant sur un lien
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 hamburger.classList.remove('active');
@@ -1290,86 +1490,45 @@
 
         portfolioButtons.forEach(button => {
             button.addEventListener('click', () => {
-                // Retirer la classe active de tous les boutons
                 portfolioButtons.forEach(btn => btn.classList.remove('active'));
-                // Ajouter la classe active au bouton cliqué
                 button.classList.add('active');
-                
-                // Masquer toutes les sections
-                portfolioSections.forEach(section => {
-                    section.classList.remove('active');
-                });
-                
-                // Afficher la section correspondante
+                portfolioSections.forEach(section => section.classList.remove('active'));
                 const section = button.getAttribute('data-section');
                 const targetSection = document.getElementById(`${section}-section`);
-                
                 if (targetSection) {
                     targetSection.classList.add('active');
-                    
-                    // Scroll vers la section
-                    targetSection.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
         });
 
-        // Observer pour l'animation des éléments au défilement
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
+        // Observer pour animations au défilement
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
-                }
+                if (entry.isIntersecting) entry.target.style.opacity = '1';
             });
-        }, observerOptions);
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-        // Observer les éléments à animer
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
         // Gestion des téléchargements
         document.getElementById('download-cv').addEventListener('click', function(e) {
             e.preventDefault();
-            // Simuler le téléchargement (remplacer par vos vrais fichiers)
             const link = document.createElement('a');
-            link.href = '#'; // Remplacez par le chemin vers votre CV
+            link.href = '#';
             link.download = 'CV_Junior_GBOKOSSOU.pdf';
             link.click();
         });
 
         document.getElementById('download-synthesis').addEventListener('click', function(e) {
             e.preventDefault();
-            // Simuler le téléchargement (remplacer par vos vrais fichiers)
             const link = document.createElement('a');
-            link.href = '#'; // Remplacez par le chemin vers votre tableau de synthèse
+            link.href = '#';
             link.download = 'Tableau_Synthese_Junior_GBOKOSSOU.pdf';
             link.click();
         });
 
-        document.getElementById('download-portfolio').addEventListener('click', function(e) {
-            e.preventDefault();
-            // Simuler le téléchargement (remplacer par vos vrais fichiers)
-            const link = document.createElement('a');
-            link.href = '#'; // Remplacez par le chemin vers votre portfolio complet
-            link.download = 'Portfolio_Junior_GBOKOSSOU.pdf';
-            link.click();
-        });
-
-        // Animation au chargement de la page
-        window.addEventListener('load', () => {
-            document.body.classList.add('loaded');
-        });
+        window.addEventListener('load', () => document.body.classList.add('loaded'));
     </script>
 </body>
-</html>            
-                
-
-                   
+</html>
